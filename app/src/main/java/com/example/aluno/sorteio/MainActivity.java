@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView resultado;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private void sort(View view) {
         Integer intFirstValue = Integer.parseInt(firstValue.getText().toString());
         Integer intSecondValue = Integer.parseInt(secondValue.getText().toString());
-        Integer result = Math.random()
+        Integer result = new Random().nextInt(intSecondValue-intFirstValue) + intFirstValue;
+        resultado.setText(result.toString());
     }
 }
