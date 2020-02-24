@@ -24,12 +24,14 @@ public class MainActivity extends AppCompatActivity {
         firstValue = findViewById(R.id.edtFirstValue);
         secondValue = findViewById(R.id.edtSecondValue);
         btnSortear = findViewById(R.id.button);
-    }
-
-    private void sort(View view) {
-        Integer intFirstValue = Integer.parseInt(firstValue.getText().toString());
-        Integer intSecondValue = Integer.parseInt(secondValue.getText().toString());
-        Integer result = new Random().nextInt(intSecondValue-intFirstValue) + intFirstValue;
-        resultado.setText(result.toString());
+        btnSortear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer intFirstValue = Integer.parseInt(firstValue.getText().toString());
+                Integer intSecondValue = Integer.parseInt(secondValue.getText().toString());
+                Integer result = new Random().nextInt(intSecondValue-intFirstValue) + intSecondValue;
+                resultado.setText(result.toString());
+            }
+        });
     }
 }
