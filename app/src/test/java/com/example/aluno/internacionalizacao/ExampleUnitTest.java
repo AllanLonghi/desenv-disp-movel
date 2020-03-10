@@ -1,4 +1,4 @@
-package com.example.aluno.sorteio;
+package com.example.aluno.internacionalizacao;
 
 import org.junit.Test;
 

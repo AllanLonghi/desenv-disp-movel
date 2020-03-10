@@ -1,4 +1,4 @@
-package com.example.aluno.sorteio;
+package com.example.aluno.internacionalizacao;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.aluno.sorteio", appContext.getPackageName());
+        assertEquals("com.example.aluno.internacionalizacao", appContext.getPackageName());
     }
 }
