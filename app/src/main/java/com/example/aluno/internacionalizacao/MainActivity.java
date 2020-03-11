@@ -23,10 +23,7 @@ public class MainActivity extends AppCompatActivity {
         listview = findViewById(R.id.listView);
 
         final ArrayList<String> frutas = new ArrayList<>();
-        frutas.add("Maça");
-        frutas.add("pera");
-        frutas.add("uva");
-        frutas.add("melancia");
+        frutas.add("Button");
 
         ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(),
                 android.R.layout.simple_list_item_1,
@@ -38,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, frutas.get(i), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, ComponentView.class);
+                intent.putExtra("componente", "button");
                 startActivity(intent);
             }
         });
