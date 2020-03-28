@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, FlatList, ScrollView } from "react-native";
+import { Button, FlatList } from "react-native";
 import TodoItem from "./todo-item";
 
 class TodoList extends React.Component {
@@ -15,8 +15,13 @@ class TodoList extends React.Component {
 
     renderItem = ({ item }) => {
         return (
-            <TodoItem title={item.title} value={item.value} id={item.id} onChangeText={this.onChangeText} />
+            <TodoItem title={item.title} value={item.value} id={item.id} onChangeText={this.onChangeText} close={this.close} />
         );
+    }
+
+    close = (id) => {
+        const filteredData = this.state.data.filter(item => item.id !== id);
+        this.setState({ data: filteredData });
     }
 
     onPress = () => {
@@ -48,7 +53,6 @@ class TodoList extends React.Component {
                     color="#000000"
                     accessibilityLabel="Adicionar item a lista."
                 />
-
                 <FlatList
                     data={this.state.data}
                     keyExtractor={item => item.id}
@@ -57,6 +61,7 @@ class TodoList extends React.Component {
             </>
         );
     }
+
 }
 
 export default TodoList;
