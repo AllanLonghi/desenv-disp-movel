@@ -18,27 +18,23 @@ export default class TodoItem extends React.Component {
             onPanResponderTerminationRequest: (evt, gestureState) => false,
             onPanResponderMove: (evt, gestureState) => {
                 if (gestureState.dx > 35) {
-                    //this.setScrollViewEnabled(false);
                     let newX = gestureState.dx + this.gestureDelay;
                     position.setValue({ x: newX, y: 0 });
                 }
             },
             onPanResponderRelease: (evt, gestureState) => {
-                if (gestureState.dx < 150) {
+                if (gestureState.dx < 250) {
                     Animated.timing(this.state.position, {
                         toValue: { x: 0, y: 0 },
                         duration: 150,
                     }).start(() => {
-                        //this.setScrollViewEnabled(true);
                     });
-
                 } else {
                     Animated.timing(this.state.position, {
                         toValue: { x: width, y: 0 },
                         duration: 300,
                     }).start(() => {
                         this.props.close(this.props.id);
-                        //.setScrollViewEnabled(true);
                     });
                 }
             },
