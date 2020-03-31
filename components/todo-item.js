@@ -23,7 +23,7 @@ export default class TodoItem extends React.Component {
                 }
             },
             onPanResponderRelease: (evt, gestureState) => {
-                if (gestureState.dx < 250) {
+                if (gestureState.dx < 180) {
                     Animated.timing(this.state.position, {
                         toValue: { x: 0, y: 0 },
                         duration: 150,

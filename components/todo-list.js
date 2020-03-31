@@ -5,12 +5,7 @@ import TodoItem from "./todo-item";
 class TodoList extends React.Component {
 
     state = {
-        data: [
-            { title: "Item 0", id: "0", value: "Todo Item 00" },
-            { title: "Item 1", id: "1", value: "Todo Item 01" },
-            { title: "Item 2", id: "2", value: "Todo Item 02" },
-            { title: "Item 3", id: "3", value: "Todo Item 03" }
-        ]
+        data: [ ]
     };
 
     renderItem = ({ item }) => {
@@ -26,7 +21,7 @@ class TodoList extends React.Component {
 
     onPress = () => {
         const data = this.state.data;
-        const newId = data.length;
+        const newId = (data.length > 0 ? parseInt(data[data.length-1].id) : 0) + 1;
         const title = `Item ${newId}`;
         data.push({ title, id: `${newId}`, value: "" });
         this.setState({ data });
@@ -57,6 +52,7 @@ class TodoList extends React.Component {
                     data={this.state.data}
                     keyExtractor={item => item.id}
                     renderItem={this.renderItem}
+                    scrollEnabled={false}
                 />
             </>
         );
