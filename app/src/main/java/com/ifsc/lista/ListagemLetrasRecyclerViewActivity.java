@@ -1,38 +1,34 @@
-package br.com.rbeninca.listafrutas;
+package com.ifsc.lista;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-
-public class ListagemFrutasRecyclerViewActivity extends AppCompatActivity {
+public class ListagemLetrasRecyclerViewActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    FrutaController frutaController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listagem_frutas_recycler_view);
+        setContentView(R.layout.activity_listagem_letras_recycler_view);
 
-        FrutaController frutaController = new FrutaController();
+        LetrasController letrasController = new LetrasController();
 
         recyclerView = findViewById(R.id.recylerView);
 
-        //Configuração Recycle View
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        //Configuração Adapter para recycler View
-        FrutaAdapterRecyclerView frutaAdapterRecyclerView =
-                new FrutaAdapterRecyclerView(
+        LetraAdapterRecyclerView frutaAdapterRecyclerView =
+                new LetraAdapterRecyclerView(
                         getApplicationContext(),
-                        R.layout.template_item_fruta,
-                        frutaController.FRUTAS
+                        R.layout.template_item_letra,
+                        letrasController.LETRAS
                 );
 
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(
@@ -41,7 +37,7 @@ public class ListagemFrutasRecyclerViewActivity extends AppCompatActivity {
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(getApplicationContext(),ExibeFrutas.class );
+                        Intent intent = new Intent(getApplicationContext(),ExibeLetras.class );
                         intent.putExtra("id",position);
                         startActivity(intent);
                     }

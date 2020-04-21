@@ -1,4 +1,4 @@
-package br.com.rbeninca.listafrutas;
+package com.ifsc.lista;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,16 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-
-class FrutaAdapterRecyclerView extends RecyclerView.Adapter<FrutaAdapterRecyclerView.MyViewHolder> {
+class LetraAdapterRecyclerView extends RecyclerView.Adapter<LetraAdapterRecyclerView.MyViewHolder> {
     Context mContext;
     int mResource;
-    Fruta[] mDataset;
+    Letra[] mDataset;
 
-    public FrutaAdapterRecyclerView(Context mContext, int mResource, Fruta[] mDataset) {
+    public LetraAdapterRecyclerView(Context mContext, int mResource, Letra[] mDataset) {
         this.mContext = mContext;
         this.mResource = mResource;
         this.mDataset = mDataset;
@@ -28,8 +24,6 @@ class FrutaAdapterRecyclerView extends RecyclerView.Adapter<FrutaAdapterRecycler
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        //Criando  propriedade LayoutInflater
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View convertView = layoutInflater.inflate(mResource,parent,false);
 
@@ -40,19 +34,11 @@ class FrutaAdapterRecyclerView extends RecyclerView.Adapter<FrutaAdapterRecycler
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Letra letra =mDataset[position];
 
-        Fruta fruta =mDataset[position];
-        // Populando item da view
-
-
-        NumberFormat nf = new DecimalFormat("#,###.00");
-
-        holder.tvCodigo.setText(Integer.toString(fruta.getCodigo()));
-        holder.tvNome.setText(fruta.getNome());
-        holder.tvPreco.setText(nf.format (fruta.getPreco()));
-        holder.tvPrecoVenda.setText(nf.format (fruta.getPreco_venda()));
-        holder.imgView.setImageResource(fruta.getImagem());
-
+        holder.tvCodigo.setText(letra.getId());
+        holder.tvNome.setText(letra.getNome());
+        holder.imgView.setImageResource(letra.getImagem());
     }
 
     @Override
@@ -64,18 +50,13 @@ class FrutaAdapterRecyclerView extends RecyclerView.Adapter<FrutaAdapterRecycler
     public  class MyViewHolder extends RecyclerView.ViewHolder{
         TextView tvCodigo;
         TextView tvNome;
-        TextView tvPreco;
-        TextView tvPrecoVenda;
         ImageView imgView;
 
         public MyViewHolder(@NonNull View convertView) {
             super(convertView);
 
-            //Associando elementos da view inflada a váriaveis locais
              tvCodigo = (TextView) convertView.findViewById(R.id.tvCodigo);
              tvNome = (TextView) convertView.findViewById(R.id.tvNome);
-             tvPreco =  (TextView) convertView.findViewById(R.id.tvPreco);
-             tvPrecoVenda =(TextView) convertView.findViewById(R.id.tvPrecoVenda);
              imgView = (ImageView) convertView.findViewById(R.id.imageView);
         }
     }

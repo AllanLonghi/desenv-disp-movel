@@ -1,4 +1,4 @@
-package br.com.rbeninca.listafrutas;
+package com.ifsc.lista;
 
 import android.content.Context;
 
